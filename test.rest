@@ -1,7 +1,33 @@
+
+/// Test för att hämta alla användare ///
 GET http://localhost:3000/login
 
 ###
 
+/// Test-post med rätt email och lösenord ///
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "tets@email.com",
+    "password": "testPassword"
+}
+
+###
+
+/// Test-post med fel email och lösenord ///
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "carolien@hagg.com",
+    "password": "ägg"
+}
+
+
+###
+
+/// Post för att lägga till en användare ///
 POST http://localhost:3000/register
 Content-Type: application/json
 
@@ -12,8 +38,10 @@ Content-Type: application/json
     "subOnNewsletter": true
 }
 
+
 ###
 
+/// Post för att lägga till en användare ///
 POST http://localhost:3000/register
 Content-Type: application/json
 

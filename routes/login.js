@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
 
+/// Kom ihåg att ta bort //////////////////////////////////////////////////////////
 router.get("/", async (req, res) => {
   console.log("req", req);
   try {
@@ -13,28 +15,35 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  try {
-    if (req.body.email) {
-      const user = User.find(email);
-
-      req.body.password;
-      //brcyty
-      const userPAss = bcrupt(req.body.password);
-
-      if (user.password == userPAss) {
+  let loginUser;
+  User.find({ email: req.body.email }, function (err, user) {
+    loginUser = user;
+    if (loginUser == null) {
+      return res.send("Det finns ingen användare");
+    } else {
+      try {
+        bcrypt.compare(
+          req.body.password,
+          loginUser[0].password,
+          function (error, response) {
+            if (error) {
+              console.log("Något gick fel ", error);
+            }
+            if (response) {
+              res.json({
+                id: loginUser[0].id,
+                subOnNewsletter: loginUser[0].subOnNewsletter,
+              });
+            } else {
+              res.send("Fel lösenord");
+            }
+          }
+        );
+      } catch (error) {
+        console.log("error ", error);
       }
     }
-
-    if (req.body.email == User.find(email)) {
-    }
-  } catch (error) {}
-
-  rescape.json({
-    userId: user.id,
-    subOnNewsletter: user.subOnNewsletter,
   });
-
-  res.json({ userId: User.find(id) });
 });
 
 module.exports = router;
