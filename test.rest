@@ -1,0 +1,25 @@
+GET http://localhost:3000/login
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Test person",
+    "email": "tets@email.com",
+    "password": "testPassword",
+    "subOnNewsletter": true
+}
+
+###
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Caroline hägg",
+    "email": "carolien@hagg.com",
+    "password": "hägg",
+    "subOnNewsletter": true
+}
