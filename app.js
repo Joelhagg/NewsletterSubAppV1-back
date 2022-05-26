@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
+const adminRouter = require("./routes/admin");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, "../NewsletterSubAppV1-front")));
 
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
+app.use("/admin", adminRouter);
 
 app.listen(3001, () => {
   console.log("Server running");

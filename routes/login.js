@@ -13,10 +13,11 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+////////////////////////////////////////////////////////////////////////////////////
 
 router.post("/", (req, res) => {
   let loginUser;
-  User.find({ email: req.body.email }, function (err, user) {
+  User.findOne({ email: req.body.email }, (err, user) => {
     loginUser = user;
     if (loginUser == null) {
       return res.send("Det finns ingen användare");
@@ -24,18 +25,18 @@ router.post("/", (req, res) => {
       try {
         bcrypt.compare(
           req.body.password,
-          loginUser[0].password,
-          function (error, response) {
+          loginUser.password,
+          (error, response) => {
             if (error) {
               console.log("Något gick fel ", error);
             }
             if (response) {
               res.json({
-                id: loginUser[0].id,
-                subOnNewsletter: loginUser[0].subOnNewsletter,
+                id: loginUser.id,
+                subOnNewsletter: loginUser.subOnNewsletter,
               });
             } else {
-              res.send("Fel lösenord");
+              res.json("Fel lösenord");
             }
           }
         );

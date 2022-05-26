@@ -20,7 +20,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "carolien@hagg.com",
+    "email": "caroline@hagg.com",
     "password": "ägg"
 }
 
@@ -47,7 +47,32 @@ Content-Type: application/json
 
 {
     "name": "Caroline hägg",
-    "email": "carolien@hagg.com",
+    "email": "caroline@hagg.com",
     "password": "hägg",
+    "subOnNewsletter": false
+}
+
+
+###
+
+
+PUT http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "_id": "628f7e73992cb8e1dc692237",
+    "subOnNewsletter": false
+}
+
+
+###
+
+
+/// PUT för att ändra i en användare ///
+PUT http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "_id": "628f7e66992cb8e1dc692234",
     "subOnNewsletter": true
 }
