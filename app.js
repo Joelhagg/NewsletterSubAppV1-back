@@ -7,7 +7,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bcrypt = require("bcrypt");
-const cors = require("cors");
 
 const loginRouter = require("./routes/login");
 const registerRouter = require("./routes/register");
@@ -21,7 +20,6 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("connected to database"));
 
 app.use(logger("dev"));
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
