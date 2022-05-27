@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
   let loginUser;
   User.findOne({ email: req.body.email }, (err, user) => {
     loginUser = user;
-    if (loginUser == null) {
+    if (loginUser === null) {
       return res.send("Det finns ingen användare");
     } else {
       try {
