@@ -38,39 +38,38 @@ router.get("/isAuthAdmin", async (req, res) => {
     let allUsers;
     let allUsersEmail;
     try {
-      // users = await User.find();
+      users = await User.find();
 
-      // for (let i = 0; i < users.length; i++) {
-      //   let user = `<div>
-      //       <br />
-      //       <hr>
-      //       <br>
-      //       <h3>Användarens namn: ${users[i].name}</h3>
-      //       <h3>Anändarens email: ${users[i].email}</h3>
-      //       <h3>Prenumererar på nyhetsbrevet: ${users[i].subOnNewsletter}</h3>
-      //       <h3>Registrerad: ${users[i].registrationDate}</h3>
-      //       <br />
-      //       <br />
-      //     </div>`;
-      //   allUsers += user;
-      // }
+      for (let i = 0; i < users.length; i++) {
+        let user = `<div>
+            <br />
+            <hr>
+            <br>
+            <h3>Användarens namn: ${users[i].name}</h3>
+            <h3>Anändarens email: ${users[i].email}</h3>
+            <h3>Prenumererar på nyhetsbrevet: ${users[i].subOnNewsletter}</h3>
+            <h3>Registrerad: ${users[i].registrationDate}</h3>
+            <br />
+            <br />
+          </div>`;
+        allUsers += user;
+      }
 
-      // for (let i = 0; i < users.length; i++) {
-      //   let user = `<div>
-      //       <h3>${users[i].email}</h3>
-      //     </div>`;
-      //   allUsersEmail += user;
-      // }
+      for (let i = 0; i < users.length; i++) {
+        let user = `<div>
+            <h3>${users[i].email}</h3>
+          </div>`;
+        allUsersEmail += user;
+      }
 
-      // let spacingHTML = `<div>
-      //   <h1>Alla användare</h1>
-      //   <br />
-      //   <br />
-      //   <h2>Emailadresser</h2>
-      //   </div>`;
+      let spacingHTML = `<div>
+        <h1>Alla användare</h1>
+        <br />
+        <br />
+        <h2>Emailadresser</h2>
+        </div>`;
 
-      return res.send("<h1>yes</h1>");
-      // return res.send(spacingHTML + allUsersEmail + allUsers + logOut);
+      return res.send(spacingHTML + allUsersEmail + allUsers + logOut);
     } catch (error) {
       res.json({
         message: "Finns ingen sparade användare eller så gick något fel: ",
