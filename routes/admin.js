@@ -38,7 +38,7 @@ router.get("/isAuthAdmin", async (req, res) => {
     let allUsers;
     let allUsersEmail;
     try {
-      users = await User.find();
+      // users = await User.find();
 
       // for (let i = 0; i < users.length; i++) {
       //   let user = `<div>
