@@ -3,18 +3,6 @@ const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
-/// Kom ihåg att ta bort //////////////////////////////////////////////////////////
-router.get("/", async (req, res) => {
-  console.log("req", req);
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-////////////////////////////////////////////////////////////////////////////////////
-
 router.post("/", (req, res) => {
   let loginUser;
   User.findOne({ email: req.body.email }, (err, user) => {
