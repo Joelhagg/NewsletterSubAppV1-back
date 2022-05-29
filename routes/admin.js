@@ -56,10 +56,12 @@ router.get("/isAuthAdmin", async (req, res) => {
       }
 
       for (let i = 0; i < users.length; i++) {
-        let user = `<div>
-            <h3>${users[i].email}</h3>
-          </div>`;
-        allUsersEmail += user;
+        if (users[i].subOnNewsletter == true) {
+          let user = `<div>
+              <h3>${users[i].email}</h3>
+            </div>`;
+          allUsersEmail += user;
+        }
       }
 
       let spacingHTML = `<div>
