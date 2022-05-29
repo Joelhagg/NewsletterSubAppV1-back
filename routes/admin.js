@@ -10,9 +10,9 @@ router.get("/", (req, res) => {
       <h1>Hej är du Admin?</h1>
       <h2>Logga in om du är det!</h2>
       <br />
-      <input name="username" type="text" />
+      <input placeholder="Username" name="username" type="text" />
       <br />
-      <input name="password" type="text" />
+      <input placeholder="Password" name="password" type="password" />
       <br />
       <input name="submitButton" type="submit" />
     </form>`;
@@ -41,7 +41,7 @@ router.get("/isAuthAdmin", async (req, res) => {
       users = await User.find();
 
       for (let i = 0; i < users.length; i++) {
-        let user = `<div>
+        let user = `
             <br />
             <br>
             <h3>Användarens namn: ${users[i].name}</h3>
@@ -50,8 +50,7 @@ router.get("/isAuthAdmin", async (req, res) => {
             <h3>Registrerad: ${users[i].registrationDate}</h3>
             <br />
             <hr>
-            <br />
-          </div>`;
+            <br />`;
         allUsers += user;
       }
 
@@ -59,7 +58,7 @@ router.get("/isAuthAdmin", async (req, res) => {
         if (users[i].subOnNewsletter == true) {
           let user = `<div>
               <h3>${users[i].email}</h3>
-            </div><br /><hr><br />`;
+            </div>`;
           allUsersEmail += user;
         }
       }
@@ -69,7 +68,7 @@ router.get("/isAuthAdmin", async (req, res) => {
         <h2>Användares emailadresser som prenumererar på nyhetsbrevet:</h2>
       `;
 
-      let allUserHeading = `<br /><br /><h1>Alla användare</h1>`;
+      let allUserHeading = `<h1>Alla användare</h1>`;
 
       return res.send(
         spacingHTML + allUsersEmail + allUserHeading + allUsers + logOut
