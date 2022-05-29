@@ -64,12 +64,11 @@ router.get("/isAuthAdmin", async (req, res) => {
         }
       }
 
-      let spacingHTML = `<div>
+      let spacingHTML = `
         <h1>Alla användare</h1>
         <br />
         <br />
-        <h2>Emailadresser</h2>
-        </div>`;
+        <h2>Användares emailadresser som prenumererar på nyhetsbrevet</h2>`;
 
       return res.send(spacingHTML + allUsersEmail + allUsers + logOut);
     } catch (error) {
