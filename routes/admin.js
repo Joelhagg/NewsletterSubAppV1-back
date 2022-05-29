@@ -42,15 +42,15 @@ router.get("/isAuthAdmin", async (req, res) => {
 
       for (let i = 0; i < users.length; i++) {
         let user = `
-            <br />
+            <br>
             <br>
             <h3>Användarens namn: ${users[i].name}</h3>
             <h3>Anändarens email: ${users[i].email}</h3>
             <h3>Prenumererar på nyhetsbrevet: ${users[i].subOnNewsletter}</h3>
             <h3>Registrerad: ${users[i].registrationDate}</h3>
-            <br />
+            <br>
             <hr>
-            <br />`;
+            <br>`;
         allUsers += user;
       }
 
@@ -65,10 +65,10 @@ router.get("/isAuthAdmin", async (req, res) => {
 
       let spacingHTML = `
         <h1>Admin</h1>
-        <h2>Användares emailadresser som prenumererar på nyhetsbrevet:</h2>
+        <h2>Användares emailadresser som prenumererar på nyhetsbrevet</h2><br>
       `;
 
-      let allUserHeading = `<h1>Alla användare</h1>`;
+      let allUserHeading = `<hr><br><h1>Alla användare</h1>`;
 
       return res.send(
         spacingHTML + allUsersEmail + allUserHeading + allUsers + logOut
