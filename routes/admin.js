@@ -30,9 +30,7 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/isAuthAdmin", async (req, res) => {
-  console.log("inside /isAuthAdmin");
   if (isAuthAdmin) {
-    console.log("inside if");
     let logOut = `<a href="/admin" ><button>Logga ut</button></a><br /><br />`;
     let users;
     let allUsers;
