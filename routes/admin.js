@@ -33,7 +33,7 @@ router.get("/isAuthAdmin", async (req, res) => {
   console.log("inside /isAuthAdmin");
   if (isAuthAdmin) {
     console.log("inside if");
-    let logOut = `<a href="/admin" ><button>Logga ut</button></a>`;
+    let logOut = `<a href="/admin" ><button>Logga ut</button></a><br /><br />`;
     let users;
     let allUsers;
     let allUsersEmail;
@@ -71,7 +71,9 @@ router.get("/isAuthAdmin", async (req, res) => {
 
       let allUserHeading = `<h1>Alla användare</h1>`;
 
-      return res.send(spacingHTML + allUsersEmail + allUsers + logOut);
+      return res.send(
+        spacingHTML + allUsersEmail + allUserHeading + allUsers + logOut
+      );
     } catch (error) {
       res.json({
         message: "Finns ingen sparade användare eller så gick något fel: ",
