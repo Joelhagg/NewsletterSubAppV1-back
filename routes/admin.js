@@ -5,7 +5,7 @@ const User = require("../models/user");
 let isAuthAdmin = false;
 router.get("/", (req, res) => {
   let loginForm = `
-  <div><a href="index.html"><button>Tillbaka till start</button></a></div>
+  <div><a href="https://joelhagg.github.io/NewsletterSubAppV1-front/"><button>Tillbaka till start</button></a></div>
   <form action="admin/login" method="post">
       <h1>Hej är du Admin?</h1>
       <h2>Logga in om du är det!</h2>
